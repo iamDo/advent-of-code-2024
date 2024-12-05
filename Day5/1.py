@@ -33,6 +33,13 @@ def check_rule(order, rule):
     return True
 
 
+def is_valid(order, rules):
+    for rule in rules:
+        if not check_rule(order, rule):
+            return False
+    return True
+
+
 def middle_value(lst):
     middle_index = int(len(lst)/2)
     return lst[middle_index]
@@ -52,11 +59,7 @@ def main():
     valid_orders = []
     for order in orders:
         applicable_rules = [rule for rule in rules if rule_applies(order, rule)]
-        valid_order = True
-        for rule in applicable_rules:
-            if not check_rule(order, rule):
-                valid_order = False
-        if valid_order:
+        if is_valid(order, applicable_rules):
             valid_orders.append(order)
 
     middle_numbers = [int(middle_value(order)) for order in valid_orders]

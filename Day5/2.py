@@ -4,6 +4,7 @@ from operator import itemgetter
 from copy import deepcopy
 
 
+
 def separate_orders_and_rules(lines):
     rules = []
     orders = []
@@ -61,6 +62,7 @@ def fix_order(order, rules):
                 fixed_order = move_position(fixed_order, value_index, lowest_index)
 
     return fixed_order
+
 
 def move_position(lst, origin, destination):
     lst = deepcopy(lst)
